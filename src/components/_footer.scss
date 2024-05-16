@@ -56,6 +56,7 @@
 
                      li>a {
                        @extend %link;
+                       font-size: 16px;
                        
                     }
                 }
@@ -82,4 +83,72 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+
+        &__container {
+            padding: 40px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 670px) {
+    .footer {
+
+        .footer__container__sub {
+            padding : 10px;
+
+            &__text {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .footer {
+
+        &__container {
+            padding: 20px;
+            grid-template-columns: 1fr;
+
+            &__left {
+                @include position(center, center);
+
+                .footer-contact {
+                    @include position(center, center);
+                }
+            }
+
+            &__right {
+                @include position(center, center);
+
+                &__nav {
+                    @include position(center, center);
+
+                    ul {
+                        @include position(center, center);
+                    
+                    }
+                }
+            }
+
+           &__sub {
+            grid-column: 1;
+            margin-top: 20px;
+           
+            &__text {
+                flex-direction: column;
+                gap : 16px;
+            }
+           }
+        }
+
+       
+    }
+    
 }
