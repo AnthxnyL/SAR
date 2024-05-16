@@ -1,0 +1,58 @@
+.header {
+    @include size(100%, auto);
+    @include flex(center, center);
+    background-color: #FBFBFB; 
+
+    &__container {
+        @include flex(space-between, center);
+        @include size (100%, 100%);
+        margin : 24px 80px;
+
+        &__logo {
+            @include flex(center, center);
+            @include size (auto, 100%);
+        
+            img {
+               @include size (120px, auto);
+            }
+        }
+
+        &__nav {
+            @include flex(center, center);
+            @include size (auto, 100%);
+
+            ul {
+              @include flex(center, center);
+              gap : 50px;
+              @include size (100%, 100%);
+
+              li a {
+                @extend %link;
+              }
+
+            }
+        }
+
+        &__button {
+          @include flex(center, center);
+
+          button {
+            background-color: transparent;
+            outline: none;
+            border: none;
+
+              a{
+                  @extend %button-primary;
+                }
+            }
+        }
+    }
+}
+
+
+.container {
+    @include size (100%, auto);
+    @include flex(center, center);
+    max-width: 1900px;
+}
+

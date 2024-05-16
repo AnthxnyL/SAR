@@ -1,0 +1,11 @@
+{
+  "name": "my-sass-workspace",
+  "version": "1.0.0",
+  "description": "My Sass Workspace",
+  "scripts": {
+    "build": "sass src/main.scss dist/main.css --style compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.43.4"
+  }
+}

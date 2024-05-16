@@ -1,0 +1,33 @@
+%button-primary {
+  background-color: $secondary-color;
+  color: $white;
+  border: none;
+  padding : 20px 32px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  @extend %font-button;
+  text-decoration: none;
+}
+
+%button-primary:hover {
+  opacity: 0.7;
+  transition-duration: 0.3s;
+}
+
+%link {
+  color : $link-color;
+  @extend %font-link;
+}
+
+%link:hover {
+  color : $secondary-color;
+  transition-duration: 0.3s;
+  text-decoration: underline;
+  @extend %font-link;
+}
+
+%link:active {
+  color : $primary-color;
+  text-decoration: none;
+}
+

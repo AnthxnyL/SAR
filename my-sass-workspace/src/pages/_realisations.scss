@@ -1,0 +1,184 @@
+.title {
+    margin-top : 120px;
+    @include flex(center, center, column);
+    @include size(100%, auto);
+    gap : 24px;
+
+    h2 {
+        @extend %font-h2;
+        color: $black;
+        text-align: center;
+
+        span {
+            color: $primary-color;
+        }
+    }
+
+    p {
+        @extend %font-body;
+        color: $third-color;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .title {
+        padding: 0 80px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .title {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .title {
+        padding: 0 20px;
+
+        h2 {
+            font-size: $h2-mobile;
+        }
+
+        p {
+            font-size: $body-mobile;
+        }
+    }
+}
+
+
+
+
+.gallery {
+    @include flex(center, center);
+    @include size(100%, auto);
+    margin-top: 120px;
+
+    &__grid {
+        @include grid(1fr 1fr, repeat(6, 360px), 25px);
+        @include size(100%, auto);
+        padding: 0 80px;
+
+        &__card {
+            @include size(100%, auto);
+            position: relative;
+
+            img {
+                @include size(100%, 100%);
+                object-fit: cover;
+            }
+
+            &__hover{
+                @include flex(center, center);
+                @include size(100%, 100%);
+                background-color: $secondary-color;
+                display: none;
+                position: absolute;
+                top : 0;
+                opacity: 0;
+
+                &__text {
+                    @include flex(center, center, column);
+                    gap : 24px;
+
+                    h3 {
+                        @extend %font-h3;
+                        color: $white;
+
+                        span {
+                            color: $primary-color;
+                        }
+                    }
+
+                    .card-description {
+                        @include flex(center, center, column);
+                        @extend %font-body;
+                        color: $white;
+                    }
+                }
+
+            }
+
+            &:hover {
+                .gallery__grid__card__hover {
+                display: flex;
+                opacity: 0.8;
+                }
+            }
+        }
+
+        .left {
+            grid-column: 1;
+        }
+
+        .right {
+            grid-column: 2;
+        }
+
+        .double-size {
+            grid-row: span 2;   
+        }
+
+
+    }
+}
+
+
+@media screen and (max-width: 1024px){
+    .gallery {
+       &__grid {
+        grid-template-rows: repeat(6, 300px);
+       }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .gallery {
+        &__grid {
+            padding: 0 40px;
+            grid-template-rows: repeat(6, 200px);
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    .gallery {
+        margin-top: 60px;
+        &__grid {
+            grid-template-rows: repeat(6, 100px);
+            gap : 15px;
+        }
+    }
+}
+
+@media screen and (max-width : 500px){
+    .gallery {
+        &__grid {
+            padding: 0 20px;
+        }
+    }
+}
+
+@media screen and (max-width : 375px){
+    .gallery {
+        &__grid {
+         @include grid(1fr, repeat(8, 200px), 15px);
+
+           .double-size {
+               grid-row: span 1;
+           }
+
+           .right {
+               grid-column: auto;
+           }
+
+           .left {
+               grid-column: auto;
+           }
+        }
+    }
+
+}
+
+

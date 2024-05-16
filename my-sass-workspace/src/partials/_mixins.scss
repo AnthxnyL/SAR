@@ -1,0 +1,36 @@
+// Ce fichier est intentionnellement laissé vide
+
+@mixin grid($columns, $rows, $gap) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin flex($justify, $align, $direction : row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin position ($justify, $align) {
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin size($width : auto, $height : auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin ul-nostyle {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+
+
+
+
