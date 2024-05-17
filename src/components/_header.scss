@@ -1,38 +1,40 @@
 .header {
-    @include size(100%, auto);
-    @include flex(center, center);
-    background-color: #FBFBFB; 
+  @include size(100%, auto);
+  @include flex(center, center);
+  background-color: #FBFBFB; 
+  position: fixed;
+  top : 0;
+  z-index: 10;
 
     &__container {
+      @include flex(space-between, center);
+      @include size (100%, 100%);
+      margin : 24px 80px;
+
+      &__logo {
+          @include flex(center, center);
+          @include size (auto, 100%);
+      
+          img {
+              @include size (120px, auto);
+          }
+      }
+
+      &__nav {
         @include flex(space-between, center);
         @include size (100%, 100%);
-        margin : 24px 80px;
 
-        &__logo {
-            @include flex(center, center);
-            @include size (auto, 100%);
-        
-            img {
-               @include size (120px, auto);
-            }
+
+        ul {
+          @include flex(center, center);
+          gap : 50px;
+          @include size (100%, 100%);
+
+          li a {
+            @extend %link;
+          }
+
         }
-
-        &__nav {
-            @include flex(center, center);
-            @include size (auto, 100%);
-
-            ul {
-              @include flex(center, center);
-              gap : 50px;
-              @include size (100%, 100%);
-
-              li a {
-                @extend %link;
-              }
-
-            }
-        }
-
         &__button {
           @include flex(center, center);
 
@@ -41,12 +43,27 @@
             outline: none;
             border: none;
 
-              a{
-                  @extend %button-primary;
-                }
+            a{
+                @extend %button-primary;
             }
+          }
         }
-    }
+
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+    
+        .bar {
+          background-color: $secondary-color;
+          width: 25px;
+          height: 3px;
+          margin: 5px;
+          -webkit-transition: 0.3s;
+        } 
+      }
+  } 
 }
 
 
@@ -56,3 +73,63 @@
     max-width: 1900px;
 }
 
+
+@media screen and (max-width : 1024px) {
+  .header__container .hamburger {
+    display: block;
+    cursor: pointer;
+
+    &.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    &.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+  
+  
+  .header__container__nav {
+    position: fixed;
+    top: 80px;
+    left : -100%;
+    background-color: $white;
+    width: 100%;
+    height: 100vh;
+    transition: 0.3s ease-in-out;
+    @include flex(center, center, column);
+
+    &__button {
+      margin-bottom: 250px;
+    }
+
+    ul {
+      flex-direction: column;
+      text-align: center;
+
+    }
+
+    &.active {
+      left: 0;
+    }
+  }
+
+  
+}
+
+@media screen and (max-width : 768px) {
+  .header__container {
+    margin : 24px 40px;
+  }
+}
+
+
+@media screen and (max-width : 480px) {
+  .header__container {
+    margin : 24px 20px;
+  }
+}

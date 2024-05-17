@@ -87,14 +87,14 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
-.header__container__button button a {
+.header__container__nav__button button a {
   font-size: 16px;
   font-weight: 700;
   line-height: 110%;
   font-family: "Poppins", sans-serif;
 }
 
-.header__container__button button a {
+.header__container__nav__button button a {
   background-color: #650D1C;
   color: #FAFAFA;
   border: none;
@@ -104,7 +104,7 @@ a {
   text-decoration: none;
 }
 
-.header__container__button button a:hover {
+.header__container__nav__button button a:hover {
   opacity: 0.7;
   transition-duration: 0.3s;
 }
@@ -132,6 +132,9 @@ a {
   align-items: center;
   flex-direction: row;
   background-color: #FBFBFB;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 .header__container {
   display: flex;
@@ -156,10 +159,10 @@ a {
 }
 .header__container__nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: auto;
+  width: 100%;
   height: 100%;
 }
 .header__container__nav ul {
@@ -171,17 +174,29 @@ a {
   width: 100%;
   height: 100%;
 }
-.header__container__button {
+.header__container__nav__button {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
-.header__container__button button {
+.header__container__nav__button button {
   background-color: transparent;
   outline: none;
   border: none;
 }
+.header__container .hamburger {
+  display: none;
+  cursor: pointer;
+}
+.header__container .hamburger .bar {
+  background-color: #650D1C;
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  -webkit-transition: 0.3s;
+}
+
 .container {
   width: 100%;
   height: auto;
@@ -192,6 +207,54 @@ a {
   max-width: 1900px;
 }
 
+@media screen and (max-width: 1024px) {
+  .header__container .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .header__container .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .header__container .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .header__container .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+  .header__container__nav {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    background-color: #FAFAFA;
+    width: 100%;
+    height: 100vh;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .header__container__nav__button {
+    margin-bottom: 250px;
+  }
+  .header__container__nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header__container__nav.active {
+    left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header__container {
+    margin: 24px 40px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header__container {
+    margin: 24px 20px;
+  }
+}
 .footer {
   width: 100%;
   height: auto;
