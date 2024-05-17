@@ -1,7 +1,7 @@
 .header {
   @include size(100%, auto);
   @include flex(center, center);
-  background-color: #FBFBFB; 
+  background-color: $white; 
   position: fixed;
   top : 0;
   z-index: 10;
