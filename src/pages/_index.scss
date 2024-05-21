@@ -12,7 +12,7 @@
 
         &__title {
             @include flex(center, center, column);
-            margin-bottom: 200px;
+            margin-bottom: 300px;
 
             h1 {
                 @include flex(center, flex-start, column);
@@ -28,6 +28,65 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 1024px) {
+    .home {
+        &__container {
+            padding: 0 40px;
+
+            &__title {
+                h1 {
+                    font-size: 48px;
+                    span {
+                        font-size: 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        &__container {
+            padding: 0 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .home {
+        &__container {
+           @include size (100%, 80vh);
+        }
+    }
+
+    .block {
+        top : 400px;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+    .home {
+        &__container {
+
+            &__title {
+               h1 {
+                     font-size: 38px;
+                     span {
+                          font-size: 38px;
+                     }
+                
+               }
+            }
+        }
+    }
+}
+
+.margin {
+    margin-top: 600px;
 }
 
 .gallery .double-rows {
@@ -649,4 +708,348 @@
            }
         }
     }
+}
+
+
+
+//  TEST
+
+.block {
+    position: absolute;
+    top : 500px;
+    z-index: 1;
+    margin-top: 120px;
+    @include size (100%, auto);
+    @include flex(center, center, column);
+    padding: 0 80px;
+   
+    &__container {
+        @include size(100%, auto);
+        @include flex(space-between, center);
+        gap : 30px;
+        padding: 40px;
+        border: 2px solid $primary-color;
+        background-color: $white;
+        box-shadow: 8px 8px 0px 0px $primary-color;
+
+        &__text {
+            @include flex(center, flex-start, column);
+            gap : 24px;
+            display: none;
+
+            h4 {
+               @extend %font-h3;
+               color : $primary-color;
+               font-size: 24px; 
+            }
+
+            p {
+                @extend %font-body;
+                color: $black;
+            }
+        }
+
+        &__img {
+            @include flex(center, center);
+            @include size(100%, auto);
+            gap : 24px;
+
+            .block__img {
+                object-fit: contain;
+                position: relative;
+                transition: width 2s;
+
+                span {
+                    position: absolute;
+                    z-index: 2;
+                    top: 0;
+                    left: 0;
+                    padding: 10px 20px;
+                }
+    
+                .filter {
+                    position: absolute;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    @include size(100%, 100%);
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+
+                img {
+                    @include size(100%, 100%);
+                    object-fit: cover;
+                }
+
+            }
+        }
+    }
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    } 
+}
+
+@keyframes hiden {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    } 
+}
+
+
+.show-text {
+   display: flex;
+    animation-name: reveal;
+    animation-duration: 2s;
+}
+
+.hide-text {
+    display: none;
+    animation-name: hiden;
+    animation-duration: 2s;
+}
+
+.block__img {
+    @include size(70px, 235px);
+
+    span {
+        font-size: 20px;
+        color : $white;
+        @extend %font-h3;
+    }
+}
+
+@keyframes pushing {
+    0% {
+        transform: width(70px);
+    }
+
+    50% {
+        transform: width(152px);
+    }
+
+    100% {
+        transform: width(250px);
+    }
+}
+
+
+@keyframes expanded {
+    0% {
+        width: 70px;
+    }
+
+    100% {
+        width: 250px;
+    }
+}
+
+
+@keyframes collapsed {
+    0% {
+        width: 250px;
+    }
+
+    100% {
+        width: 30px;
+    }
+}
+
+
+
+.img {
+    @include size (70px, 230px);
+
+    img {
+        object-fit: cover;
+        @include size(100%, 100%);
+    }
+}
+
+.expanded {
+    animation-name: expanded;
+    animation-duration: 2s;
+
+    @include size(250px, 235px);
+
+    span {
+        @extend %font-h3;
+        font-size: 32px;
+        color : $primary-color;
+    }
+}
+
+.collapsed {
+    animation-name: collapsed;
+    animation-duration: 2s;
+
+    @include size(70px, 235px);
+
+    span {
+        font-size: 20px;
+        color : $white;
+        @extend %font-h3;
+    }
+}
+
+
+@media screen and (max-width: 1225px) {
+    .block {
+        &__container {
+            gap : 20px;
+
+            &__text {
+                h4 {
+                    font-size: $h3-mobile;
+                }
+
+                p {
+                    font-size: $body-mobile;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 950px) {
+
+    @keyframes collapsed {
+        0% {
+            width: 150px;
+        }
+    
+        100% {
+            width: 50px;
+        }
+
+    }
+
+    @keyframes expanded {
+        0% {
+            width: 50px;
+        }
+
+        100% {
+            width: 150px;
+        } 
+    }
+
+    .block {
+        padding: 0 40px;       
+    }
+
+    .block__img {
+        @include size(50px, 200px);
+    }
+
+    .expanded {
+        @include size(150px, 200px);
+    }
+
+    .collapsed {
+        @include size(50px, 200px);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .block {
+        padding: 0 20px;
+
+        &__container {
+            gap : 20px;
+
+            &__text {
+                h4 {
+                    font-size: $h3-mobile;
+                }
+
+                p {
+                    font-size: $body-mobile;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    @keyframes collapsed {
+        0% {
+            width: 200px;
+        }
+    
+        100% {
+            width: 70px;
+        }
+
+    }
+
+    @keyframes expanded {
+        0% {
+            width: 70px;
+        }
+
+        100% {
+            width: 200px;
+        } 
+    }
+    
+    .expanded {
+        @include size(200px, 200px);
+    }
+
+    .collapsed {
+        @include size(70px, 200px);
+    }
+
+    .block {
+        &__container {
+          flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .block {
+        top : 350px;
+    }
+}
+
+@media screen and (max-width : 500px) {
+    .block {
+       
+        &__container {
+            padding: 20px;
+            
+            &__img {
+                @include size(100%, auto);
+                gap : 16px;
+
+                .block__img {
+
+                    span {
+                        padding: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.home-block__container {
+    @include size(100%, auto);
+    position: relative;
 }
